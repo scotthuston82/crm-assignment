@@ -80,11 +80,7 @@ class Contact
   # 1. which of the contact's attributes you want to update
   # 2. the new value for that attribute
   # and then make the appropriate change to the contact
-  def update
-    puts "which attribute would you like to change?"
-    attribute = gets.chomp
-    puts "What would you like to change the value to?"
-    value = gets.chomp
+  def update(attribute,value)
     if attribute == "first_name"
       @first_name = value
     elsif attribute == "last_name"
@@ -100,11 +96,8 @@ class Contact
   # but it should allow you to search for a contact using attributes other than id
   # by specifying both the name of the attribute and the value
   # eg. searching for 'first_name', 'Betty' should return the first contact named Betty
-  def self.find_by
-    puts "what would you like to search by?"
-    search_by = gets.chomp
-    puts "enter #{search_by}"
-    value = gets.chomp
+  def self.find_by(search_by,value)
+
     @@contacts.each do |contact|
       if contact.first_name == value
         contact.display
@@ -147,8 +140,3 @@ class Contact
   # Feel free to add other methods here, if you need them.
 
 end
-
-scott = Contact.create("Scott", "Huston", "scotthuston1982@gmail.com")
-batman = Contact.create("Bruce", "Wayne","bruce@wayne.com")
-Contact.del
-p Contact.all
