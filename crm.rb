@@ -51,8 +51,13 @@ class CRM
     print 'Enter a Note: '
     note = gets.chomp
 
-    Contact.create(first_name, last_name, email, note)
-  end
+    Contact.create(
+      first_name: first_name,
+      last_name:  last_name,
+      email:      email,
+      note:       note
+    )
+    end
 
   def modify_existing_contact
     puts "enter the id of the contact you would like to modify"
@@ -63,7 +68,7 @@ class CRM
     value = gets.chomp
     Contact.all.each do |contact|
       if contact.id == modify
-        contact.update(attribute,value)
+        contact.update(attribute => value)
       end
     end
   end
@@ -87,12 +92,12 @@ class CRM
     search_by = gets.chomp
     puts "enter #{search_by}"
     value = gets.chomp
-    p Contact.find_by(search_by,value)
+    p Contact.find_by(search_by => value)
   end
 
 
 end
-scott = Contact.create("Scott","Huston","scott@huston.com")
+
 first = CRM.new
 first.main_menu
 
