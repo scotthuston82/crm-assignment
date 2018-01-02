@@ -95,3 +95,7 @@ end
 scott = Contact.create("Scott","Huston","scott@huston.com")
 first = CRM.new
 first.main_menu
+
+at_exit do
+  ActiveRecord::Base.connection.close
+end
